@@ -64,6 +64,11 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+input[type="submit"]:hover {
+    background-color: #1b58a8;
+    transition: .3s;
+}
+
 .todo-list {
     padding: 0 1em 2em;
     margin: 1em 2em;

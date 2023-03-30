@@ -19,9 +19,9 @@ function App() {
     const loadData = async () => {
       setLoading(true);
       const response = await fetch(API + "/todos")
-      .then((response) => response.json())
-      .then((data) => data)
-      .catch((error) => console.log(error));
+        .then((response) => response.json())
+        .then((data) => data)
+        .catch((error) => console.log(error));
 
       setLoading(false);
       setTodos(response);
@@ -82,11 +82,11 @@ function App() {
       },
     });
 
-    setTodos((prevState) => 
-    prevState.map((todo) => todo.id === data.id ? (todo = data) : todo));
+    setTodos((prevState) =>
+      prevState.map((todo) => todo.id === data.id ? (todo = data) : todo));
   };
 
-  if(loading) {
+  if (loading) {
     return <p>Loading...</p>
   }
 
@@ -101,7 +101,7 @@ function App() {
   return (
     <div className="App">
       <div className="todo-header">
-        <h1>React Todo</h1>
+        <h1>To Do List - React</h1>
       </div>
       <div className="todo-form">
         <h2>Insira a sua próxima tarefa</h2>
@@ -136,12 +136,12 @@ function App() {
               <span onClick={() => handleEdit(todo)}>
                 {!todo.done ? <BsBookmarkCheck /> : <BsBookmarkFill />}
               </span>
-              <BsTrash onClick={() => handleDelete(todo.id)}/>
+              <BsTrash onClick={() => handleDelete(todo.id)} />
+            </div>
           </div>
-        </div>
         ))}
+      </div>
     </div>
-  </div>
   );
 }
 
