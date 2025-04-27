@@ -4,46 +4,124 @@ Exercício Semana 08 - Criação de uma página To Do List com React
 
 Status - Concluído
 
-O Desafio<br>
-Neste exercício, foi proposto criar uma página para negociação em bolsa para vendas, com React,
-utilizando uma tabela para inserir os dados da negociação e funcionalidade de realizar o incremento do total automaticamente à cada inserção.
-Por ainda ser uma estrutura nova para mim, pois ainda estou pensando em HTML puro, este exercício ajuda a dar mais um passo para entender como funcionam 
-as importações e exportações dos componentes e sua utilização.
+# Todo List App
 
-Para utilizar este projeto como base, faça o seguinte passo-a-passo:
+Este projeto é um **Desafio do curso de FullStack do LAB365** com o objetivo de praticar conceitos fundamentais de:
 
-Clone o projeto para a sua máquina<br>
-```bash
-gh repo clone ricardo-werner/LAB365-FullStack-ToDoList-React
-```
+- ReactJS
+- Fetch API
+- JSON Server (fake API REST)
+- Controle de estado e atualização de interfaces
+- Simulação de backend para front-end
+- Uso de concurrently e nodemon para facilitar o fluxo de desenvolvimento
 
-Instale as dependências, como o json-server e os icones que foram utilizados no programa.<br>
-Para tanto é necessário que esteja dentro da pasta do projeto no terminal.<br>
+---
 
-Obs- a instalação do json-server é para simular a API para permitir fazer requisições assincronas com um servidor fictício, 
-para similar requisições de http com react, como se fosse uma API real.
+## Tecnologias Utilizadas
 
-Nota - para rodar este comando é necessário ter instalado no computador o NodeJS e o Node Package Manager(NPM)
- 
-```bash
-npm install json-server react-icons
-```
+- [ReactJS](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [JSON Server](https://github.com/typicode/json-server)
+- [Concurrently](https://www.npmjs.com/package/concurrently)
+- [Nodemon](https://www.npmjs.com/package/nodemon)
 
-Rode o projeto<br>
-```bash
-npm run dev
-```
+---
 
-Abra um novo terminal e rode o servidor<br>
+## Instalacão e Execução Local
 
-Obs - irá abrir uma página no navegador onde podemos verificar os dados que serão inseridos, deletados da lista de tarefas.<br>
+Clone o repositório:
 
 ```bash
-npm run server
+git clone https://github.com/ricardo-werner/LAB365-FullStack-ToDoList-React.git
 ```
 
-Tecnologias utilizadas:<br>
-Visual Studio Code<br>
-NodeJS (compilação Vite - página oficial - https://vitejs.dev/ )<br>
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Inicie o projeto e o servidor JSON juntos, com cores personalizadas para melhor visualização:
+
+```bash
+npm run dev:all
+```
+
+Este comando é alimentado por `concurrently`, que roda:
+
+- O Vite (Frontend) 🌍
+- O JSON Server com `nodemon` (Backend Fake) 📂
+
+**Scripts configurados:**
+
+```json
+"scripts": {
+   "server": "nodemon --watch data/db.json --exec \"json-server --watch data/db.json --port 5000\"",
+    "dev:all": "concurrently -n \"SERVER,FRONTEND\" -c \"cyan,green\" \"npm run server\" \"npm run dev\""
+}
+```
+## Visualize o resultado na página web:
+
+   <p align="center">
+     <img width="480" src="./src/assets/to_readme/telaWeb.PNG" alt="Resultado na Web">
+   </p>
+---
+
+## 📂 Estrutura de Arquivos
+
+```
+/
+|- data/
+|  |- db.json (banco de dados simulado)
+|- src/
+|  |- App.css
+|  |- App.jsx
+|  |- index.css
+|  |- main.jsx
+|- .gitignore
+|- index.html
+|- packge-lock.json
+|- package.json
+|- README.md
+```
+
+---
+
+## 💪 Aprendizados e Conclusão
+
+- Integração frontend-backend simulada com sucesso.
+- Manipulação de rotas REST (`PUT`, `POST`, `DELETE`).
+- Melhor organização do fluxo de desenvolvimento usando **Concurrently**.
+- Refatorando e evoluindo com boas práticas de código.
+- Entendimento da importância de scripts claros para ambientes de desenvolvimento.
+
+Este desafio mostrou que tanto o front quanto o "fake back" precisam estar bem configurados para uma boa experiência de desenvolvimento!
+
+---
+
+## 🛠️ Fluxo de Funcionamento da Aplicação
+
+```
+- 👤 Usuário adiciona/deleta tarefa.
+- ⚡ React dispara `fetch`.
+- 📂 JSON Server manipula o `db.json`.
+- 💾 Dados atualizados.
+- 📺 Interface atualizada!
+
+```
+
+## 🔹 Como utilizar
+
+1. Acesse o navegador em `http://localhost:5173`
+2. Utilize o aplicativo para adicionar ou excluir tarefas.
+3. O banco `db.json` será atualizado automaticamente!
 
 ![todosm](https://user-images.githubusercontent.com/105825127/228952684-0ee4b2d5-2e12-46ef-be50-8e59657b0d6b.jpg)
+
+
+**Criado com foco em aprendizado, evolução contínua e boas práticas.** ✨
+
+### 🙋‍♂️ Autor
+
+Ricardo Werner<br>
+Dev em Desenvolvimento
