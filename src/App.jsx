@@ -61,20 +61,25 @@ function App() {
 
   // função para deletar uma tarefa
   const handleDelete = async (id) => {
-
-    await fetch(API + "/todos" + id, {
+  try {
+    // Fazendo a requisição DELETE
+    await fetch(API + "/todos/" + id, {
       method: "DELETE"
     });
 
+    // Atualizando o estado local após o DELETE
     setTodos((prevState) => prevState.filter((todo) => todo.id !== id));
-  };
+  } catch (error) {
+    console.error("Erro ao deletar:", error);
+  }
+};
 
   // função para marcar uma tarefa como concluída
   const handleEdit = async (todo) => {
 
     todo.done = !todo.done;
 
-    const data = await fetch(API + "/todos" + todo.id, {
+    const data = await fetch(API + "/todos/" + todo.id, {
       method: "PUT",
       body: JSON.stringify(todo),
       headers: {
