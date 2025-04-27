@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "json-server --watch data/db.json --port 5000"
+    "server": "nodemon --watch data/db.json --exec \"json-server --watch data/db.json --port 5000\"",
+    "dev:all": "concurrently -n \"SERVER,FRONTEND\" -c \"cyan,green\" \"npm run server\" \"npm run dev\""
   },
   "dependencies": {
     "json-server": "^0.17.3",
@@ -20,6 +21,8 @@
     "@types/react": "18.2.62",
     "@types/react-dom": "18.2.18",
     "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.10",
     "vite": "^6.2.6"
   }
 }
